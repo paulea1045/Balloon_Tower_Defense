@@ -1,0 +1,22 @@
+import javax.swing.*;
+
+public class Screen extends JFrame {
+
+    public static void main(String[] args) {
+        new Screen();
+    }
+
+    public Screen() {
+        JFrame jframe = new JFrame();
+
+        this.setSize(800, 600);
+        this.setTitle("Tower Defense");
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setResizable(false);
+        this.setVisible(true);
+        this.setLocation(null);
+        while (true) {
+
+        }
+    }
+}
