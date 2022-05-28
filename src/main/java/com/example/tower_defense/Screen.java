@@ -24,7 +24,7 @@ public class Screen extends Application{
     private static final double dart= 15;
 
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("Tower Defense baby");
+        primaryStage.setTitle("Balloons Tower Defense");
 
         Group root= new Group();
         Scene scene= new Scene(root,Color.LIGHTSKYBLUE);
@@ -41,6 +41,15 @@ public class Screen extends Application{
         grass.setFill(Color.GREEN);
         root.getChildren().add(grass);
 
+        Image monkey= new Image("C:\\Users\\Euhun\\IdeaProjects\\Tower Defense\\src\\main\\java\\monkeyman.png");
+        ImageView monkeyFrame= new ImageView();
+        monkeyFrame.setImage(monkey);
+        monkeyFrame.setFitHeight(800);
+        monkeyFrame.setFitWidth(600);
+        monkeyFrame.setX(800);
+        monkeyFrame.setY(60);
+        root.getChildren().add(monkeyFrame);
+
         Circle sun= new Circle(1280,0,100);
         sun.setFill(Color.YELLOW);
         root.getChildren().add(sun);
@@ -50,10 +59,14 @@ public class Screen extends Application{
         Timeline t1= new Timeline(new KeyFrame(Duration.millis(10),event ->run(gc)));
         t1.setCycleCount(Timeline.INDEFINITE);
        // primaryStage.setScene(new Scene(new StackPane(canvas))); idk what's wrong with this
+
+
+
         primaryStage.show();
 
 
     }
+
 
 
     public void run(GraphicsContext gc){
