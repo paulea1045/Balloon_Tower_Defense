@@ -1,24 +1,25 @@
-//package com.example.tower_defense;
-//import javafx.scene.shape.*;
-//import javafx.animation.Transition;
-//
-//public class Balloon {
-//    Rectangle rect = new Rectangle (100, 40, 100, 100);
-//     rect.setArcHeight(50);
-//     rect.setArcWidth(50);
-//     rect.setFill(Color.VIOLET);
-//
-//
-//    Path path = new Path();
-//     path.getElements().add (new MoveTo (0f, 50f));
-//     path.getElements().add (new CubicCurveTo (40f, 10f, 390f, 240f, 1904, 50f));
-//
-//     pathTransition.setDuration(Duration.millis(10000));
-//     pathTransition.setNode(rect);
-//     pathTransition.setPath(path);
-//     pathTransition.setOrientation(OrientationType.ORTHOGONAL_TO_TANGENT);
-//     pathTransition.setCycleCount(4f);
-//     pathTransition.setAutoReverse(true);
-//
-//     pathTransition.play();
-//}
+package com.example.tower_defense;
+
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+public class Balloon{
+    public double x;
+    public double y;
+    public static Image image;
+
+    static {
+        try {
+            image = new Image(new FileInputStream("src/main/java/balloon.png"));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void update(GraphicsContext gc){
+        gc.drawImage(image, x, y);
+    }
+}

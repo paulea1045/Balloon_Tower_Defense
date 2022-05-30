@@ -16,12 +16,15 @@ import javafx.util.Duration;
 import javafx.scene.shape.*;
 import javafx.scene.text.*;
 
+import java.io.FileInputStream;
+
 public class Screen extends Application{
-    private static final int width= 1280;
-    private static final int height= 720;
-    private static final int tower_height= 400;
-    private static final int tower_width= 200;
-    private static final double dart= 15;
+    private static final int width = 1280;
+    private static final int height = 720;
+    private static final int towerHeight = 400;
+    private static final int towerWidth = 200;
+    private static final double dart = 15;
+    private static Balloon balloon = new Balloon();
 
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Balloons Tower Defense");
@@ -30,7 +33,7 @@ public class Screen extends Application{
         Scene scene= new Scene(root,Color.LIGHTSKYBLUE);
         primaryStage.setScene(scene);
 
-        Image icon= new Image("C:\\Users\\Euhun\\IdeaProjects\\Tower Defense\\src\\main\\java\\icon.png");
+        Image icon= new Image(new FileInputStream("src/main/java/icon.png"));
         primaryStage.getIcons().add(icon);
 
         primaryStage.setHeight(height);
@@ -39,26 +42,26 @@ public class Screen extends Application{
 
         Rectangle grass= new Rectangle(0 , 720-80,1280,80);
         grass.setFill(Color.GREEN);
-        root.getChildren().add(grass);
+        //root.getChildren().add(grass);
 
-        Image monkey= new Image("C:\\Users\\Euhun\\IdeaProjects\\Tower Defense\\src\\main\\java\\monkeyman.png");
+        Image monkey= new Image(new FileInputStream("src/main/java/monkeyman.png"));
         ImageView monkeyFrame= new ImageView();
         monkeyFrame.setImage(monkey);
         monkeyFrame.setFitHeight(800);
         monkeyFrame.setFitWidth(600);
         monkeyFrame.setX(800);
         monkeyFrame.setY(60);
-        root.getChildren().add(monkeyFrame);
+        //root.getChildren().add(monkeyFrame);
 
         Circle sun= new Circle(1280,0,100);
         sun.setFill(Color.YELLOW);
-        root.getChildren().add(sun);
+        //root.getChildren().add(sun);
 
         Canvas canvas= new Canvas(width, height);
         GraphicsContext gc= canvas.getGraphicsContext2D();
         Timeline t1= new Timeline(new KeyFrame(Duration.millis(10),event ->run(gc)));
         t1.setCycleCount(Timeline.INDEFINITE);
-       // primaryStage.setScene(new Scene(new StackPane(canvas))); idk what's wrong with this
+        root.getChildren().add(canvas);
 
 
 
@@ -70,8 +73,8 @@ public class Screen extends Application{
 
 
     public void run(GraphicsContext gc){
-
-
+        gc.setFill(Color.BLACK);
+        gc.fillRect(0, 0, 1000, 1000);
     }
 
     public static void main(String[] args) { /*This is how go*/
