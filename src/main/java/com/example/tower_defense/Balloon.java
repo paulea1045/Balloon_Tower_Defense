@@ -7,7 +7,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class Balloon{
-    public double x;
+    public double x = -100;
     public static Image image;
 
     static {

@@ -26,6 +26,7 @@ public class Screen extends Application{
     private static final int towerHeight = 400;
     private static final int towerWidth = 200;
     private static final double dart = 15;
+    private int counter = 0;
 
     public ArrayList<Balloon> balloons = new ArrayList<>();
 
@@ -82,11 +83,15 @@ public class Screen extends Application{
 
     public void run(GraphicsContext gc){
         gc.clearRect(0, 0, 10000, 10000);
-        for (Balloon b : balloons){
-            b.x += 3;
-            b.update(gc);
+        counter++;
+        if(counter == 120){
+            balloons.add(new Balloon());
+            counter = 0;
         }
-
+        for(int i = 0; i < balloons.size(); i++){
+            balloons.get(i).update(gc);
+            balloons.get(i).x += 2;
+        }
     }
 
     public static void main(String[] args) { /*This is how go*/
