@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 
 public class Balloon{
     public double x = -100;
+    public double y = Math.random() * 350 + 200;
     public static Image image;
 
     static {
@@ -19,6 +20,6 @@ public class Balloon{
     }
 
     public void update(GraphicsContext gc){
-    gc.drawImage(image, x, 550, 100, 100);
+    gc.drawImage(image, x, y, 100, 100);
     }
 }

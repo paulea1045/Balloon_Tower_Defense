@@ -27,6 +27,7 @@ public class Screen extends Application{
     private static final int towerWidth = 200;
     private static final double dart = 15;
     private int counter = 0;
+    private boolean gameOver = false;
 
     public ArrayList<Balloon> balloons = new ArrayList<>();
 
@@ -77,21 +78,40 @@ public class Screen extends Application{
         root.getChildren().add(canvas);
         primaryStage.show();
 
+        InputManager.mouse.addOnLeftPressed(() -> {
+            click(InputManager.mouse.x, InputManager.mouse.y);
+        });
     }
 
-
+public void click(double x, double y){
+        for(int i = 0; i < balloons.size(); i++){
+            if(balloons.get(i).x < x && x < balloons.get(i).x + 100 && balloons.get(i).y < y && y < balloons.get(i).y + 100){
+                balloons.remove(i);
+            }
+        }
+}
 
     public void run(GraphicsContext gc){
         gc.clearRect(0, 0, 10000, 10000);
         counter++;
-        if(counter == 120){
+        if(counter == 15){
             balloons.add(new Balloon());
             counter = 0;
         }
         for(int i = 0; i < balloons.size(); i++){
             balloons.get(i).update(gc);
-            balloons.get(i).x += 2;
+            balloons.get(i).x += 10;
+            if(balloons.get(i).x >= 1000){
+                balloons.remove(i);
+                gameOver = true;
+            }
+
         }
+        if(gameOver){
+            gc.setFont(new Font(100));
+            gc.fillText("GAME OVER", 340, 160);
+        }
+
     }
 
     public static void main(String[] args) { /*This is how go*/
