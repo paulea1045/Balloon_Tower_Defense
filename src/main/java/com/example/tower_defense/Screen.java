@@ -87,6 +87,7 @@ public void click(double x, double y){
         for(int i = 0; i < balloons.size(); i++){
             if(balloons.get(i).x < x && x < balloons.get(i).x + 100 && balloons.get(i).y < y && y < balloons.get(i).y + 100){
                 balloons.remove(i);
+                i--;
             }
         }
 }
@@ -103,6 +104,7 @@ public void click(double x, double y){
             balloons.get(i).x += 10;
             if(balloons.get(i).x >= 1000){
                 balloons.remove(i);
+                i--;
                 gameOver = true;
             }
 
